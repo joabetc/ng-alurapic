@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 })
 export class AppComponent {
 
-    constructor(@Inject(Http) http) {
-        
+    constructor(http: Http) {
+
     }
  }
