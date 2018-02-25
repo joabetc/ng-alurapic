@@ -10,8 +10,16 @@ import { PanelModule } from './panel/panel.module';
 import { RegistrationComponent } from './registration/resgistration.component';
 import { ListComponent } from './list/list.component';
 
+import { routing } from './app.routes';
+
 @NgModule({
-    imports: [ BrowserModule, PhotoModule, HttpModule, PanelModule ],
+    imports: [ 
+        BrowserModule,
+        PhotoModule,
+        HttpModule,
+        PanelModule,
+        routing
+    ],
     declarations: [ AppComponent, RegistrationComponent, ListComponent ],
     bootstrap: [ AppComponent ]
 })
