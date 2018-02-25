@@ -17,7 +17,7 @@
     </div>
     <br>
     <div class="row">
-        <panel *ngFor="let photo of photos" title="{{photo.titulo}}" class="col-md-2">
+        <panel *ngFor="let photo of photos" title="{{photo.titulo | uppercase}}" class="col-md-2">
             <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
         </panel>
     </div>
