@@ -11,6 +11,9 @@ export class AppComponent {
     photos: Object[] = [];
 
     constructor(http: Http) {
-
+        let stream = http.get('v1/fotos');
+        stream.subscribe(res => {
+            this.photos = res.json();
+        });
     }
  }
