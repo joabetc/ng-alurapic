@@ -11,14 +11,14 @@
                             New Photo
                         </a>
                     </span>
-                    <input class="form-control" placeholder="Filter by photo title">
+                    <input #filterText class="form-control" placeholder="Filter by photo title">
                 </div>
             </form>
         </div>
     </div>
     <br>
     <div class="row">
-        <panel *ngFor="let photo of photos" title="{{photo.titulo | uppercase}}" class="col-md-2">
+        <panel *ngFor="let photo of photos | titleFilter: filterText.value" title="{{photo.titulo | uppercase}}" class="col-md-2">
             <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
         </panel>
     </div>
