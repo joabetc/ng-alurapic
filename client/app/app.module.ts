@@ -5,9 +5,10 @@ import 'rxjs/add/operator/map';
 
 import { AppComponent } from './app.component';
 import { PhotoModule } from './photo/photo.module';
+import { PanelModule } from './panel/panel.module';
 
 @NgModule({
-    imports: [ BrowserModule, PhotoModule, HttpModule ],
+    imports: [ BrowserModule, PhotoModule, HttpModule, PanelModule ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]
 })
