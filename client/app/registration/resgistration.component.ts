@@ -7,5 +7,10 @@ import { PhotoComponent } from "../photo/photo.component";
     templateUrl: './registration.component.html'
 })
 export class RegistrationComponent {
+
     photo: PhotoComponent = new PhotoComponent();
+
+    create() {
+        
+    }
 }
