@@ -10,7 +10,7 @@ export class RegistrationComponent {
 
     photo: PhotoComponent = new PhotoComponent();
 
-    create() {
-        
+    insert(event) {
+        event.preventDefault();
     }
 }
