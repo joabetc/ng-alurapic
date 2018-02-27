@@ -24,6 +24,7 @@ export class RegistrationComponent {
         this.http
             .post('v1/fotos', JSON.stringify(this.photo), {headers: headers} )
             .subscribe(() => {
+                this.photo = new PhotoComponent();
                 console.log("Photo successfully saved");
             });
     }
