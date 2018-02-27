@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { routing } from './app.routes';
         PhotoModule,
         HttpModule,
         PanelModule,
+        FormsModule,
         routing
     ],
     declarations: [ AppComponent, RegistrationComponent, ListComponent ],
