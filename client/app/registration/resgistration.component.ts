@@ -26,6 +26,6 @@ export class RegistrationComponent {
             .subscribe(() => {
                 this.photo = new PhotoComponent();
                 console.log("Photo successfully saved");
-            });
+            }, erro => console.log(erro));
     }
 }
