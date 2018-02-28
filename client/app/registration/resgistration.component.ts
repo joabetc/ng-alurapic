@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PhotoComponent } from "../photo/photo.component";
 import { Http, Headers } from "@angular/http";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -11,9 +12,15 @@ export class RegistrationComponent {
 
     photo: PhotoComponent = new PhotoComponent();
     http: Http;
+    myForm: FormGroup;
 
-    constructor(http: Http) {
+    constructor(http: Http, fb: FormBuilder) {
         this.http = http;
+        this.myForm = fb.group({
+            title: ['', Validators.required],
+            url: ['', Validators.required],
+            description: ['']
+        });
     }
 
     insert(event) {

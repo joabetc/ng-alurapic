@@ -1,35 +1,37 @@
 <div class="container">
-    <form #myForm="ngForm" class="row" (submit)="insert($event)">
+    <form [formGroup]="myForm" class="row" (submit)="insert($event)">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Title</label>
                 <input name="titulo"
-                    required
-                    #title="ngModel" 
+                    formControlName="title"
                     [(ngModel)]="photo.titulo" 
                     class="form-control" 
                     autocomplete="off">
-                    <span *ngIf="title.invalid" class="form-control alert-danger">
+                    <span *ngIf="myForm.controls.title.invalid" class="form-control alert-danger">
                         Title is required
                     </span>
             </div>
             <div class="form-group">
                 <label>URL</label>
                 <input name="url"
-                    required
-                    #url="ngModel" 
+                    formControlName="url"
                     [(ngModel)]="photo.url" 
                     class="form-control"
                     autocomplete="off">
-                    <span *ngIf="url.invalid" class="form-control alert-danger">
+                    <span *ngIf="myForm.controls.url.invalid" class="form-control alert-danger">
                         URL is required
                     </span>
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="descricao" ([ngModel])="photo.descricao" class="form-control" autocomplete="off"></textarea>
+                <textarea name="descricao"
+                    formControlName="description" 
+                    [(ngModel)]="photo.descricao" 
+                    class="form-control" 
+                    autocomplete="off"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="myForm.form.invalid">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
                 Save
             </button>
             <a [routerLink]="['']" class="btn btn-primary">Back</a>
