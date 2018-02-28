@@ -17,7 +17,7 @@ export class RegistrationComponent {
     constructor(http: Http, fb: FormBuilder) {
         this.http = http;
         this.myForm = fb.group({
-            title: ['', Validators.required],
+            title: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
             url: ['', Validators.required],
             description: ['']
         });
