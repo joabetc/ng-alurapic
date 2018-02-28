@@ -1,8 +1,8 @@
-.photo.effect:hover {
+.effect:hover {
   transition: all 0.5s;
   transform: scale(1.15);
 }
 
-.photo.effect {
+.effect {
   transition: all 1s;
 }
