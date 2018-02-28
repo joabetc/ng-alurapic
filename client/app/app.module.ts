@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { routing } from './app.routes';
         HttpModule,
         PanelModule,
         FormsModule,
+        ReactiveFormsModule,
         routing
     ],
     declarations: [ AppComponent, RegistrationComponent, ListComponent ],
