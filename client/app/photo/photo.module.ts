@@ -5,7 +5,8 @@ import { TitleFilter } from './photo.pipes';
 import { PhotoService } from './photo.service';
 
 @NgModule({
-    declarations: [ PhotoComponent, TitleFilter, PhotoService ],
-    exports: [ PhotoComponent, TitleFilter, PhotoService ]
+    declarations: [ PhotoComponent, TitleFilter ],
+    exports: [ PhotoComponent, TitleFilter ],
+    providers: [ PhotoService ]
 })
 export class PhotoModule { }
