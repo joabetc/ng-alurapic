@@ -1,8 +1,10 @@
 import { Http } from "@angular/http/src/http";
 import { PhotoComponent } from "./photo.component";
 import { Headers } from "@angular/http/src/headers";
+import { Observable } from "rxjs/Observable";
+import { Response } from "@angular/http/src/static_response";
 
-class PhotoService {
+export class PhotoService {
 
   http: Http;
   headers: Headers;
@@ -14,12 +16,12 @@ class PhotoService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  register(photo: PhotoComponent) {
+  register(photo: PhotoComponent): Observable<Response> {
     return this.http
       .post(this.url, JSON.stringify(photo), {headers: this.headers});
   }
 
-  list() {
+  list(): Observable<PhotoComponent[]> {
     return this.http
       .get(this.url)
       .map(res => res.json());

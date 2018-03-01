@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { PhotoComponent } from "../photo/photo.component";
-import { Http, Headers } from "@angular/http";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PhotoService } from '../photo/photo.service';
 
 @Component({
     moduleId: module.id,
@@ -11,11 +11,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegistrationComponent {
 
     photo: PhotoComponent = new PhotoComponent();
-    http: Http;
     myForm: FormGroup;
+    service: PhotoService;
 
-    constructor(http: Http, fb: FormBuilder) {
-        this.http = http;
+    constructor(service: PhotoService, fb: FormBuilder) {
+        this.service = service;
         this.myForm = fb.group({
             title: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
             url: ['', Validators.required],
@@ -25,14 +25,11 @@ export class RegistrationComponent {
 
     insert(event) {
         event.preventDefault();
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        this.http
-            .post('v1/fotos', JSON.stringify(this.photo), {headers: headers} )
+        this.service
+            .register(this.photo)
             .subscribe(() => {
+                console.log('Photo successfully saved');
                 this.photo = new PhotoComponent();
-                console.log("Photo successfully saved");
-            }, erro => console.log(erro));
+            }, error => console.log(error));
     }
 }
