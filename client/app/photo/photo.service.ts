@@ -3,7 +3,9 @@ import { PhotoComponent } from "./photo.component";
 import { Headers } from "@angular/http/src/headers";
 import { Observable } from "rxjs/Observable";
 import { Response } from "@angular/http/src/static_response";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class PhotoService {
 
   http: Http;
