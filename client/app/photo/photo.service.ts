@@ -6,6 +6,7 @@ class PhotoService {
 
   http: Http;
   headers: Headers;
+  url: string = 'v1/fotos';
 
   constructor(http: Http) {
     this.http = http;
@@ -14,10 +15,13 @@ class PhotoService {
   }
 
   register(photo: PhotoComponent) {
-
+    return this.http
+      .post(this.url, JSON.stringify(photo), {headers: this.headers});
   }
 
   list() {
-
+    return this.http
+      .get(this.url)
+      .map(res => res.json());
   }
 }
