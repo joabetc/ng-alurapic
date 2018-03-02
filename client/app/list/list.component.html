@@ -20,6 +20,7 @@
     <div class="row">
         <panel *ngFor="let photo of photos | titleFilter: filterText.value" title="{{photo.titulo | uppercase}}" class="col-md-2">
             <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
+            <button class="btn btn-danger btn-block" (click)="remove(photo)">Remove</button>
         </panel>
     </div>
 </div>

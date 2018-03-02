@@ -17,4 +17,8 @@ export class ListComponent {
                 this.photos = photos;
             }, error => console.log(error));
     }
+
+    remove(photo: PhotoComponent) {
+        console.log(photo.titulo);
+    }
  }
