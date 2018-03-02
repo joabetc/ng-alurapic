@@ -10,15 +10,21 @@ import { PhotoComponent } from "../photo/photo.component";
 export class ListComponent {
 
     photos: PhotoComponent[] = [];
+    service: PhotoService;
 
     constructor(service: PhotoService) {
-        service.list()
+        this.service = service;
+        this.service.list()
             .subscribe(photos => {
                 this.photos = photos;
             }, error => console.log(error));
     }
 
     remove(photo: PhotoComponent) {
-        console.log(photo.titulo);
+        this.service.remove(photo)
+            .subscribe(
+                () => console.log('Photo successfully removed'),
+            error => console.log(error)
+        );
     }
  }
