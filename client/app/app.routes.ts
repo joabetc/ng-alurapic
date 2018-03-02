@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 const appRoutes: Routes = [
     { path: '', component: ListComponent },
     { path: 'registration', component: RegistrationComponent },
+    { path: 'registration/:id', component: RegistrationComponent },
     { path: '**', redirectTo: '' }
 ];
 
