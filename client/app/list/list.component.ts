@@ -25,9 +25,10 @@ export class ListComponent {
             .subscribe(
                 () => {
                     console.log('Photo successfully removed');
-                    let index = this.photos.indexOf(photo);
-                    this.photos.splice(index, 1);
-
+                    let newPhotos = this.photos.slice(0);
+                    let index = newPhotos.indexOf(photo);
+                    newPhotos.splice(index, 1);
+                    this.photos = newPhotos;
                 },
             error => console.log(error)
         );
