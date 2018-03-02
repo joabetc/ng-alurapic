@@ -11,6 +11,7 @@ export class ListComponent {
 
     photos: PhotoComponent[] = [];
     service: PhotoService;
+    message: string = "";
 
     constructor(service: PhotoService) {
         this.service = service;
@@ -24,13 +25,16 @@ export class ListComponent {
         this.service.remove(photo)
             .subscribe(
                 () => {
-                    console.log('Photo successfully removed');
                     let newPhotos = this.photos.slice(0);
                     let index = newPhotos.indexOf(photo);
                     newPhotos.splice(index, 1);
                     this.photos = newPhotos;
+                    this.message = 'Photo successfully removed';
                 },
-            error => console.log(error)
+            error => {
+                console.log(error);
+                this.message = 'Failed to remove the photo';
+            }
         );
     }
  }
