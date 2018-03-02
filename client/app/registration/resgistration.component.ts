@@ -17,12 +17,13 @@ export class RegistrationComponent {
     route: ActivatedRoute;
 
     constructor(service: PhotoService, fb: FormBuilder, route: ActivatedRoute) {
+        this.service = service;
         this.route = route;
         this.route.params.subscribe(params => {
             let id = params['id'];
-            console.log(id);
+            this.service.getById(id)
+                .subscribe(photo => this.photo = photo, error => console.log(error));
         });
-        this.service = service;
         this.myForm = fb.group({
             title: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
             url: ['', Validators.required],

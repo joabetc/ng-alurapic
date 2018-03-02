@@ -27,7 +27,12 @@ export class PhotoService {
       .map(res => res.json());
   }
 
-  remove(photo: PhotoComponent) {
-    return this.http.delete(this.url + '/' + photo._id)
+  remove(photo: PhotoComponent): Observable<Response> {
+    return this.http.delete(this.url + '/' + photo._id);
+  }
+
+  getById(id: string): Observable<PhotoComponent> {
+    return this.http.get(this.url + '/' + id)
+      .map(res => res.json());
   }
 }
