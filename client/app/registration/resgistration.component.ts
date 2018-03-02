@@ -21,8 +21,13 @@ export class RegistrationComponent {
         this.route = route;
         this.route.params.subscribe(params => {
             let id = params['id'];
-            this.service.getById(id)
-                .subscribe(photo => this.photo = photo, error => console.log(error));
+            if (id) {
+                this.service.getById(id)
+                    .subscribe(
+                        photo => this.photo = photo,
+                        error => console.log(error)
+                    );
+            }
         });
         this.myForm = fb.group({
             title: ['', Validators.compose([Validators.required, Validators.minLength(4)])],

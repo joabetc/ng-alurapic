@@ -17,8 +17,13 @@ export class PhotoService {
   }
 
   register(photo: PhotoComponent): Observable<Response> {
-    return this.http
-      .post(this.url, JSON.stringify(photo), {headers: this.headers});
+    if (photo._id) {
+      return this.http
+        .put(this.url + '/' + photo._id, JSON.stringify(photo), {headers: this.headers});
+    } else {
+      return this.http
+        .post(this.url, JSON.stringify(photo), {headers: this.headers});
+    }
   }
 
   list(): Observable<PhotoComponent[]> {
