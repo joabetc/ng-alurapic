@@ -23,7 +23,12 @@ export class ListComponent {
     remove(photo: PhotoComponent) {
         this.service.remove(photo)
             .subscribe(
-                () => console.log('Photo successfully removed'),
+                () => {
+                    console.log('Photo successfully removed');
+                    let index = this.photos.indexOf(photo);
+                    this.photos.splice(index, 1);
+
+                },
             error => console.log(error)
         );
     }
