@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { PhotoComponent } from "../photo/photo.component";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PhotoService } from '../photo/photo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -13,8 +14,14 @@ export class RegistrationComponent {
     photo: PhotoComponent = new PhotoComponent();
     myForm: FormGroup;
     service: PhotoService;
+    route: ActivatedRoute;
 
-    constructor(service: PhotoService, fb: FormBuilder) {
+    constructor(service: PhotoService, fb: FormBuilder, route: ActivatedRoute) {
+        this.route = route;
+        this.route.params.subscribe(params => {
+            let id = params['id'];
+            console.log(id);
+        });
         this.service = service;
         this.myForm = fb.group({
             title: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
