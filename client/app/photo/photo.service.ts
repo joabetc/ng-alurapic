@@ -16,15 +16,15 @@ export class PhotoService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  register(photo: PhotoComponent): Observable<ResgistrationMessage> {
+  register(photo: PhotoComponent): Observable<ServiceMessage> {
     if (photo._id) {
       return this.http
         .put(this.url + '/' + photo._id, JSON.stringify(photo), {headers: this.headers})
-        .map(() => new ResgistrationMessage('Photo successfully updated!', false));
+        .map(() => new ServiceMessage('Photo successfully updated!', false));
     } else {
       return this.http
         .post(this.url, JSON.stringify(photo), {headers: this.headers})
-        .map(() => new ResgistrationMessage('Photo successfully saved!', true));
+        .map(() => new ServiceMessage('Photo successfully saved!', true));
     }
   }
 
@@ -44,7 +44,7 @@ export class PhotoService {
   }
 }
 
-export class ResgistrationMessage {
+export class ServiceMessage {
   message: string;
   insert: boolean;
 
