@@ -23,7 +23,7 @@
             <a [routerLink]="['/registration', photo._id]">
                 <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
             </a>
-            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="modal.show()" [confirm]="false"></my-button>
+            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="modal.show()"></my-button>
             <modal #modal sentence="Are you sure you want to remove this photo?" (confirm)="remove(photo, panel)"></modal>
         </panel>
     </div>
