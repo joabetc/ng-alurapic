@@ -11,6 +11,7 @@ import { PanelModule } from './panel/panel.module';
 import { RegistrationComponent } from './registration/resgistration.component';
 import { ListComponent } from './list/list.component';
 import { MyButtonModule } from './my-button/my-button.module';
+import { ModalModule } from './modal/modal.module';
 
 import { routing } from './app.routes';
 
@@ -23,6 +24,7 @@ import { routing } from './app.routes';
         FormsModule,
         ReactiveFormsModule,
         MyButtonModule,
+        ModalModule,
         routing
     ],
     declarations: [ AppComponent, RegistrationComponent, ListComponent ],
