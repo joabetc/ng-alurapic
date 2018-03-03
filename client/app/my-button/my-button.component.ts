@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
     moduleId: module.id,
@@ -11,4 +11,11 @@ export class MyButtonComponent {
     @Input() buttonStyle: string = 'btn-default';
     @Input() buttonType: string = 'button';
     @Input() disabled: boolean = false;
+    @Output() action = new EventEmitter();
+
+    executeAction() {
+        if (confirm('Remove photo?')) {
+            this.action.emit(null);
+        }
+    }
 }
