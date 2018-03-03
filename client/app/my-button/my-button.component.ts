@@ -12,13 +12,8 @@ export class MyButtonComponent {
     @Input() buttonType: string = 'button';
     @Input() buttonDisabled: boolean = false;
     @Output() action = new EventEmitter();
-    @Input() confirm: boolean = false;
 
     executeAction() {
-        if (this.confirm) {
-            if (confirm('Remove photo?')) {
-                this.action.emit(null);
-            }
-        }
+        this.action.emit(null);
     }
 }
