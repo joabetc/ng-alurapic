@@ -1,20 +1,21 @@
-import { Component, Input, Output, ElementRef } from "@angular/core";
-import { EventEmitter } from "events";
+import { Component, Input, Output, EventEmitter, ElementRef, AfterViewInit } from "@angular/core";
 
 @Component({
     moduleId: module.id,
     selector: 'modal',
     templateUrl: './modal.component.html'
 })
-export class ModalComponent {
+export class ModalComponent implements AfterViewInit {
 
     @Input() private title: string = 'Are you sure?';
     @Input() private sentence: string;
-    @Output() confim = new EventEmitter();
+    @Output() confirm = new EventEmitter();
 
     constructor(private _element: ElementRef) {
         this._element = _element;
-
+    }
+    
+    ngAfterViewInit() {
         $(this._element.nativeElement).dialog({
             title: this.title,
             autoOpen: false,
@@ -26,13 +27,13 @@ export class ModalComponent {
                 },
                 Confirm: () => {
                     $(this._element.nativeElement).dialog("close");
-                    this.confim.emit(null);
+                    this.confirm.emit(null);
                 }
             }
-        })
+        });
     }
 
     show() {
-        $(this._element.nativeElement).dialog("open");
+        $(this._element.nativeElement).dialog('open');
     }
 }
