@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PhotoService } from "../photo/photo.service";
 import { PhotoComponent } from "../photo/photo.component";
+import { PanelComponent } from "../panel/panel.component";
 
 @Component({
     moduleId: module.id,
@@ -21,20 +22,22 @@ export class ListComponent {
             }, error => console.log(error));
     }
 
-    remove(photo: PhotoComponent) {
+    remove(photo: PhotoComponent, panel: PanelComponent) {
         this.service.remove(photo)
             .subscribe(
                 () => {
-                    let newPhotos = this.photos.slice(0);
-                    let index = newPhotos.indexOf(photo);
-                    newPhotos.splice(index, 1);
-                    this.photos = newPhotos;
-                    this.message = 'Photo successfully removed';
+                    panel.fadeOut(() => {
+                        let newPhotos = this.photos.slice(0);
+                        let index = newPhotos.indexOf(photo);
+                        newPhotos.splice(index, 1);
+                        this.photos = newPhotos;
+                        this.message = 'Photo successfully removed';
+                    });
                 },
-            error => {
-                console.log(error);
-                this.message = 'Failed to remove the photo';
-            }
-        );
+                error => {
+                    console.log(error);
+                    this.message = 'Failed to remove the photo';
+                }
+            );
     }
  }

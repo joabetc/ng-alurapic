@@ -19,11 +19,11 @@
     </div>
     <br>
     <div class="row">
-        <panel *ngFor="let photo of photos | titleFilter: filterText.value" title="{{photo.titulo | uppercase}}" class="col-md-2">
+        <panel #panel *ngFor="let photo of photos | titleFilter: filterText.value" title="{{photo.titulo | uppercase}}" class="col-md-2">
             <a [routerLink]="['/registration', photo._id]">
                 <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
             </a>
-            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="remove(photo)" confirm="true"></my-button>
+            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="remove(photo, panel)" confirm="true"></my-button>
         </panel>
     </div>
 </div>

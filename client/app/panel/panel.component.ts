@@ -22,6 +22,6 @@ export class PanelComponent implements OnInit {
     }
 
     fadeOut(callBack) {
-        $(this.element).fadeOut(callBack);
+        $(this.element.nativeElement).fadeOut(callBack);
     }
 }
