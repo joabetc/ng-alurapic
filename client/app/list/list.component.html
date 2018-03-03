@@ -23,8 +23,7 @@
             <a [routerLink]="['/registration', photo._id]">
                 <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
             </a>
-            <!--<button class="btn btn-danger btn-block" (click)="remove(photo)">Remove</button>-->
-            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="remove(photo)"></my-button>
+            <my-button name="Remove" buttonStyle="btn-danger btn-block" (action)="remove(photo)" confirm="true"></my-button>
         </panel>
     </div>
 </div>

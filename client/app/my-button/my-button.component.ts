@@ -10,12 +10,15 @@ export class MyButtonComponent {
     @Input() name: string = 'Ok';
     @Input() buttonStyle: string = 'btn-default';
     @Input() buttonType: string = 'button';
-    @Input() disabled: boolean = false;
+    @Input() buttonDisabled: boolean = false;
     @Output() action = new EventEmitter();
+    @Input() confirm: boolean = false;
 
     executeAction() {
-        if (confirm('Remove photo?')) {
-            this.action.emit(null);
+        if (this.confirm) {
+            if (confirm('Remove photo?')) {
+                this.action.emit(null);
+            }
         }
     }
 }

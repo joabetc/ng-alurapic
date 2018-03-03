@@ -38,9 +38,7 @@
                     class="form-control" 
                     autocomplete="off"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
-                Save
-            </button>
+            <my-button name="Save" buttonStyle="btn-primary" buttonType="submit" [buttonDisabled]="myForm.invalid"></my-button>
             <a [routerLink]="['']" class="btn btn-primary">Back</a>
         </div>
         <div class="col-md-6">
