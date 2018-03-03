@@ -49,9 +49,9 @@ export class RegistrationComponent {
         this.service
             .register(this.photo)
             .subscribe(res => {
-                this.message = res.message;
+                this.message = res.getMessage();
                 this.photo = new PhotoComponent();
-                if (!res.insert)
+                if (!res.isInsert())
                     this.router.navigate(['']);
             }, error => console.log(error));
     }

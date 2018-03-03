@@ -45,11 +45,19 @@ export class PhotoService {
 }
 
 export class ServiceMessage {
-  message: string;
-  insert: boolean;
+  private message: string;
+  private insert: boolean;
 
   constructor(message: string, insert: boolean) {
     this.message = message;
     this.insert = insert;
+  }
+
+  public getMessage() {
+    return this.message;
+  }
+
+  public isInsert() {
+    return this.insert;
   }
 }
