@@ -1,5 +1,6 @@
 <div class="container">
     <h1 class="text-center">{{photo.titulo}}</h1>
+    <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
     <form [formGroup]="myForm" class="row" (submit)="insert($event)">
         <div class="col-md-6">
             <div class="form-group">
