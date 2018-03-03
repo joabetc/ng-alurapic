@@ -51,11 +51,11 @@ export class ServiceMessage {
     this._insert = _insert;
   }
 
-  public getMessage() {
+  get message(): string {
     return this._message;
   }
 
-  public isInsert() {
+  get insert(): boolean {
     return this._insert;
   }
 }
