@@ -16,13 +16,15 @@ export class PhotoService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  register(photo: PhotoComponent): Observable<Response> {
+  register(photo: PhotoComponent): Observable<any> {
     if (photo._id) {
       return this.http
-        .put(this.url + '/' + photo._id, JSON.stringify(photo), {headers: this.headers});
+        .put(this.url + '/' + photo._id, JSON.stringify(photo), {headers: this.headers})
+        .map(() => ({ message: 'Photo successfully updated!', insert: false }));
     } else {
       return this.http
-        .post(this.url, JSON.stringify(photo), {headers: this.headers});
+        .post(this.url, JSON.stringify(photo), {headers: this.headers})
+        .map(() => ({ message: 'Photo successfully saved!', insert: true }));
     }
   }
 

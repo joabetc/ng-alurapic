@@ -16,6 +16,7 @@ export class RegistrationComponent {
     service: PhotoService;
     route: ActivatedRoute;
     router: Router;
+    message: string = '';
 
     constructor(
         service: PhotoService, 
@@ -47,10 +48,11 @@ export class RegistrationComponent {
         event.preventDefault();
         this.service
             .register(this.photo)
-            .subscribe(() => {
-                console.log('Photo successfully saved');
+            .subscribe(res => {
+                this.message = res.message;
                 this.photo = new PhotoComponent();
-                this.router.navigate(['']);
+                if (!res.insert)
+                    this.router.navigate(['']);
             }, error => console.log(error));
     }
 }
